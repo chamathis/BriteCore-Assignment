@@ -1,0 +1,158 @@
+<section class="section">
+  <div class="container-fluid">
+    <h2 class="app-page-title">Commercial Property - Add Field</h2>
+
+    <div class="big-card">
+
+      <div class="big-card__left-sidebar">
+        <div class="big-card__section-wraper">
+          <h3 class="big-card__section-title">Field Types</h3>
+
+          <div class="form-group">
+             <label class="form-group__label">Filter Types</label>
+             <input type="text" class="form-group__input"/>
+          </div>
+
+          <div class="field-list-item field-list-item--active">
+            <h4 class="field-list-item__title"><i class="fa fa-font" aria-hidden="true"></i> Text</h4>
+            <h6 class="field-list-item__info-title">Definition</h6>
+            <h5 class="field-list-item__info">String of Text</h5>
+
+            <h6 class="field-list-item__info-title">Definition</h6>
+            <h5 class="field-list-item__info">Free-form text input</h5>
+          </div>
+
+          <div class="field-list-item">
+              <h4 class="field-list-item__title"><i class="fa fa-calendar" aria-hidden="true"></i> Date</h4>
+              <h6 class="field-list-item__info-title">Definition</h6>
+              <h5 class="field-list-item__info">Standard ISO format date</h5>
+
+              <h6 class="field-list-item__info-title">Definition</h6>
+              <h5 class="field-list-item__info">Datepicker, with configurable foramt</h5>
+            </div>
+
+            <div class="field-list-item">
+                <h4 class="field-list-item__title"><i class="fa fa-car" aria-hidden="true"></i> VIN</h4>
+                <h6 class="field-list-item__info-title">Definition</h6>
+                <h5 class="field-list-item__info">Vehicle Identification Number</h5>
+
+                <h6 class="field-list-item__info-title">Definition</h6>
+                <h5 class="field-list-item__info">Free-form text input</h5>
+              </div>
+
+
+
+        </div>
+      </div>
+
+      <div class="big-card__content">
+        <div class="big-card__section-wraper">
+          <h3 class="big-card__section-title">Field Types</h3>
+
+          <div class="row">
+            <div class="col-md-8">
+              <form #empForm="ngForm">
+              <div class="row">
+                  <div class="col-md-6">
+                      <div class="form-group mb-40">
+                          <label class="form-group__label">Display Label</label>
+                          <input type="text" class="form-group__input" name="displyLabel" [(ngModel)]="displyLabel" (keypress)="referanceGen($event.target.value)"/>
+                          <span class="form-group__help-text">For display purposes, spaces allowed</span>
+                       </div>
+                   </div>
+
+                   <div class="col-md-6">
+                      <div class="form-group mb-40">
+                          <label class="form-group__label">Refernce Name</label>
+                          <input type="text" class="form-group__input" name="referenceName" [(ngModel)]="referenceName"/>
+                          <span class="form-group__help-text">Used to reference in calculations, no spaces allowed</span>
+                       </div>
+                   </div>
+
+                   <div class="col-md-6">
+                      <div class="form-group mb-40">
+                          <label class="form-group__label">Default Value</label>
+                          <input type="text" class="form-group__input"/>
+                       </div>
+                   </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                   <div class="form-group mb-40">
+                       <label class="form-group__label">Custom Validation</label>
+                       <input type="text" class="form-group__input"/>
+                       <span class="form-group__help-text">Any regex pattern can be used for custom input validation</span>
+                    </div>
+                </div>
+              </div>
+            </form>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <h3 class="big-card__section-title">Tags</h3>
+                </div>
+                <div class="col-md-6">
+                   <div class="form-group">
+                       <label class="form-group__label mb-10">Tag Group</label>
+                       <div class="tag" (click)="getTags()">
+                         Vinmaster
+                       </div>
+                       <div class="tag">
+                         ISO
+                       </div>
+                       <div class="tag">
+                         Tag 3
+                       </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label class="form-group__label mb-10">Tags</label>
+                      <p class="form-group__alert-msg" *ngIf="!tagList">Select a tag group see individual tags</p>
+                      <ul class="tag-list" *ngIf="tagList"> 
+                        <li class="tag-list__item" *ngFor="let t of tagList">
+                          Car Maker - {{t.carMake}} <br>
+                          Car Model - {{t.carModel}} <br>
+                          Car Built Year - {{t.yearBuild}} <br>
+                          Car Maker - {{t.carRegNumber}} 
+                        </li>
+                      </ul>
+                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="field-group-component">
+                <h3 class="field-group-component__title">Field Groups</h3>
+                <h5 class="field-group-component__sub-title">Choose a group for this input</h5>
+
+                <div class="field-group-item">
+                  <h5 class="field-group-item__title">Rental Vehicle Coverage Package</h5>
+                  <h6 class="field-group-item__sub-title">7 other inputs </h6>
+                </div>
+
+                <div class="field-group-component__footer">
+                  <button class="btn btn--block" type="button">Add A New Group</button>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <button class="btn btn--primary" type="button">Save Changes</button>
+
+      <button class="btn btn--danger pull-right ml-40" type="button">Delete Input</button>
+      <button class="btn pull-right ml-40" type="button">Cancel Changes</button>
+    </div>
+
+  </div>
+</section>
